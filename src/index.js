@@ -11,27 +11,31 @@ function fetchRamenData() {
     fetch(ramenURL)
     .then(response => response.json())
     .then(ramens => {
+        const detailImg = document.querySelector('.detail-image')
+        detailImg.src = ramens[0].image
+        const ramenName = document.querySelector('.name')
+        ramenName.innerText = ramens[0].name
+        const ramenRest = document.querySelector('.restaurant')
+        ramenRest.innerText = ramens[0].restaurant
+        const ramenRating = document.querySelector('#rating-display')
+        ramenRating.innerText = ramens[0].rating
+        const ramenComment = document.querySelector('#comment-display')
+        ramenComment.innerText = ramens[0].comment
+
         for (const ramen of ramens) {
             let ramenImg = document.createElement('img')
             ramenImg.src = ramen.image
             ramenMenu.appendChild(ramenImg)
 
             ramenImg.addEventListener('click', function() {
-                const detailImg = document.querySelector('.detail-image')
+                
                 detailImg.src = ramen.image
                 detailImg.alt = `${ramen.name} Image`
-
-                const ramenName = document.querySelector('.name')
                 ramenName.innerText = ramen.name
-
-                const ramenRest = document.querySelector('.restaurant')
                 ramenRest.innerText = ramen.restaurant
-
-                const ramenRating = document.querySelector('#rating-display')
                 ramenRating.innerText = ramen.rating
-
-                const ramenComment = document.querySelector('#comment-display')
                 ramenComment.innerText = ramen.comment
+
             })
         }
     })
