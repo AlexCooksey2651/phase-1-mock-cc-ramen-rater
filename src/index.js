@@ -54,3 +54,12 @@ newRamenForm.addEventListener('submit', (evt) => {
     newRamenImg.src = newRamenObj.image
     ramenMenu.appendChild(newRamenImg)
 })
+
+const editRamenForm = document.querySelector('#edit-ramen')
+editRamenForm.addEventListener('submit', (evt) => {
+    evt.preventDefault()
+    const ramenRating = document.querySelector('#rating-display')
+    ramenRating.innerText = evt.target.rating.value
+    const ramenComment = document.querySelector('#comment-display')
+    ramenComment.innerText = evt.target.comment.value
+})
